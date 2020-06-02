@@ -546,7 +546,7 @@ class SEIRSNetworkModel():
         self.parameters = { 'beta':beta, 'sigma':sigma, 'gamma':gamma, 'xi':xi, 'mu_I':mu_I, 'mu_0':mu_0, 'nu':nu, 
                             'beta_D':beta_D, 'sigma_D':sigma_D, 'gamma_D':gamma_D, 'mu_D':mu_D, 
                             'beta_local':beta_local, 'beta_D_local':beta_D_local, 'p':p,'q':q,
-                            'theta_E':theta_E, 'theta_I':theta_I, 'phi_E':phi_E, 'phi_I':phi_I, 'psi_E':psi_E, 'psi_I':psi_I }
+                            'theta_E':theta_E, 'theta_I':theta_I, 'phi_E':phi_E, 'phi_I':phi_I, 'psi_E':phi_E, 'psi_I':psi_I }
         self.update_parameters()
 
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -864,7 +864,7 @@ class SEIRSNetworkModel():
         self.N      = numpy.pad(self.N, [(0, 5*self.numNodes)], mode='constant', constant_values=0)
 
         if(self.store_Xseries):
-            self.Xseries = numpy.pad(self.Xseries, [(0, 5*self.numNodes), (0,0)], mode='constant', constant_values=0)
+            self.Xseries = numpy.pad(self.Xseries, [(0, 5*self.numNodes), (0,0)], mode=constant, constant_values=0)
 
         if(self.nodeGroupData):
             for groupName in self.nodeGroupData:
@@ -1856,7 +1856,7 @@ class SymptomaticSEIRSNetworkModel():
         self.N          = numpy.pad(self.N, [(0, 5*self.numNodes)], mode='constant', constant_values=0)
 
         if(self.store_Xseries):
-            self.Xseries = numpy.pad(self.Xseries, [(0, 5*self.numNodes), (0,0)], mode='constant', constant_values=0)
+            self.Xseries = numpy.pad(self.Xseries, [(0, 5*self.numNodes), (0,0)], mode=constant, constant_values=0)
 
         if(self.nodeGroupData):
             for groupName in self.nodeGroupData:
